@@ -96,7 +96,7 @@ end
 NomTrajectory() = NomTrajectory(Float64[],Vector{Float64}[],Vector{Float64}[])
 
 # Use the same mpc to create a backpack andno
-function DI_get_nominal_mpc_π(x0, q_n; t0 = 0.0, N_mpc = 80, T_H_sec = 4.0, TRAJ = "ERGO", ren_point_1 = [0.0; 0.0; 0.11], ren_point_2 = [0.0; 0.0; 0.11], ω_val = 1.0)
+function DI_get_nominal_mpc_π(x0, q_n; t0 = 0.0, N_mpc = 80, T_H_sec = 4.0, TRAJ = "NM", ren_point_1 = [0.0; 0.0; 0.11], ren_point_2 = [0.0; 0.0; 0.11], ω_val = 1.0)
     
     # NM: Nominal Trajectory
     # B2B: Back to Base Trajectory
@@ -114,8 +114,6 @@ function DI_get_nominal_mpc_π(x0, q_n; t0 = 0.0, N_mpc = 80, T_H_sec = 4.0, TRA
     if TRAJ == "NM"
         # println("here")
         DIX_ref, DIU_ref = RefTrajLib.DI_3D_get_desired_trajectory(t0, traj_type, N_mpc, dt, q_n)
-    elseif TRAJ == "ERGO"
-        DIX_ref, DIU_ref = RefTrajLib.DI_3D_get_desired_ergodic_trajectory(t0, traj_type, N_mpc, dt, q_n)
     elseif TRAJ == "SP"
         # println("")
         # Get the setpoint which does not correspond to the landing
