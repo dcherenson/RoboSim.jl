@@ -1,4 +1,4 @@
-module mEclares
+module RoboSim
 
 greet() = print("Hello World!")
 
