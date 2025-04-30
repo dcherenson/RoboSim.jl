@@ -5,10 +5,10 @@ using Parameters: @unpack
 using StaticArrays, Serialization
 using Interpolations
 
-include("DynamicsLibrary.jl")
+include("ExpDynamicsLibrary.jl")
 
-m = QuadSys.m
-g = QuadSys.g
+m = ExpDyn.m
+g = ExpDyn.g
 
 
 
@@ -261,8 +261,6 @@ function get_desired_trajectory_eight(t0, N, dt)
         x_des, y_des, z_des, ϕd = figureEight(ti)
         Xref[i] = [x_des[1]; y_des[1]; z_des[1]]
     end
-
-    # Actucally I can put vd and ωd here and send them as Uref
 
     return Xref
     
